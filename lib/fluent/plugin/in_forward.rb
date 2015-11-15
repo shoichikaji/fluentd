@@ -91,6 +91,8 @@ module Fluent
       @loop.run(@blocking_timeout)
     rescue => e
       log.error "unexpected error", :error => e, :error_class => e.class
+      log.error "self dump: #{self.inspect}"
+      log.error "loop dump: #{@loop.inspect}"
       log.error_backtrace
     end
 
